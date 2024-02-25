@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "750ad310-9925-4acd-9c03-7adaed78adfe",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32989199"
+	},
+	"item": [
+		{
+			"name": "Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Rajaram\",\r\n    \"email\":\"rajaram@gmail.com\",\r\n    \"mobile\":8999421778,\r\n    \"salary\":3.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/save"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/delete/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/getAll"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 3,\r\n        \"name\": \"Rahul\",\r\n        \"email\": \"rahulwaghmare2@gmail.com\",\r\n        \"mobile\": 8999422770,\r\n        \"salary\": 20.3\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/update"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/getById/4"
+			},
+			"response": []
+		}
+	]
+}
