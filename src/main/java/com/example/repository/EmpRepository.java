@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @EnableJpaRepositories
 public interface EmpRepository extends JpaRepository<Employee,Integer> {
     @Query(value = "SELECT * FROM employees WHERE mobile = :number",nativeQuery = true)
-    Employee findByNumber(@Param("number") String number);
+    String findByNumber(@Param("number") long number);
 
     @Query(value = "SELECT * FROM employees WHERE email = :mail",nativeQuery = true)
     String findByMailAddress(@Param("mail") String mail);

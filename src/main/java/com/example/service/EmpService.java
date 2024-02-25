@@ -32,18 +32,24 @@ public class EmpService {
     }
 
     public List<Employee> getAllEmployee() {
-        return (List<Employee>) empRepository.findAll();
+        return empRepository.findAll();
     }
 
     public ResponseEntity<String> updateEmployee(Employee employee) {
-        Employee emp = getEmployeeById(employee.getId());
 
-        if (emp.getEmail().equals(employee.getEmail())){
+        if (!getEmployeeByEmail(employee.getEmail())){
+            employee.setEmail(employee.getEmail());
+        }else {
             return ResponseEntity.ok(String.valueOf(new InvalidMailAddressField("Email Already Exist! Try Another one")));
+
         }
 
-        if (emp.getMobile()==employee.getMobile()){
+
+        if (!getEmployeeByMobile(employee.getMobile())) {
+            employee.setMobile(employee.getMobile());
+        } else {
             return ResponseEntity.ok(String.valueOf(new InvalidMobileNumberField("Mobile Number Already Exist! Try Another one")));
+
         }
 
 
@@ -68,7 +74,7 @@ public class EmpService {
 
     public boolean getEmployeeByMobile(long number){
 
-        if(empRepository.findByNumber(String.valueOf(number)).getMobile()==number){
+        if(empRepository.findByNumber((number))!=null){
             return true;
         }else {
             return false;
@@ -77,10 +83,15 @@ public class EmpService {
 
 
     public boolean getEmployeeByEmail(String mail){
-        if(empRepository.findByMailAddress(mail)!=null){
-            return true;
-        }else {
-            return false;
+        try{
+            if(empRepository.findByMailAddress(mail)!=null){
+                return true;
+            }else {
+                return false;
+            }
+        }catch (NullPointerException exception){
+             exception.getMessage();
+             return false;
         }
     }
     public String deleteEmployee(int id) {

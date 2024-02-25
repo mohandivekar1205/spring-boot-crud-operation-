@@ -11,10 +11,10 @@ public class Employee {
     private int id;
     @Column
     private String name;
-    @Column(unique = true)
+    @Column
     private String email;
 
-    @Column(unique = true)
+    @Column
     private long mobile;
     @Column
     private int salary;
